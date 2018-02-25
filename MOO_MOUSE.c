@@ -24,8 +24,9 @@
    RB1 -> MOO OUTPUT
    RB2 <- CONJUMPER 
 */
-#define MOO  PIN_B1
-#define CONFJUMPER PIN_B2
+#define CLICKINT  	PIN_B0
+#define MOO  		PIN_B1
+#define CONFJUMPER 	PIN_B2
 #bit INTF_BIT = 0x0B.1 
 
 #define CONF1 1000
@@ -55,11 +56,11 @@ void main(void)
     setup_adc_ports(NO_ANALOGS);                   
     setup_adc(ADC_OFF);                        
     setup_comparator(NC_NC_NC_NC);
-	output_float(PIN_B0);
+	output_float(CLICKINT);
 	output_drive(MOO);
 	output_float(CONFJUMPER);
-    ext_int_edge(L_TO_H); //click release
-    output_low(MOO);
+	ext_int_edge(L_TO_H); //click release
+	output_low(MOO);
     
     clickCount = 0; 
     got_interrupt = FALSE;     
